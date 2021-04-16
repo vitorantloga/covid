@@ -5,7 +5,7 @@ class Banco
     private static $dbNome = 'covid';
     private static $dbHost = 'localhost';
     private static $dbUsuario = 'root';
-    private static $dbSenha = 'usbw';
+    private static $dbSenha = '';
     
     private static $cont = null;
     
