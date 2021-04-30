@@ -1,3 +1,6 @@
+<?php 
+    include_once("environment_variables.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,19 +12,7 @@
 </head>
 
 <body>
-        <div class="container">
-          
-            </br><div class="row">
-                <h2>SGE Covid <span class="badge badge-secondary">v 0.8 beta</span></h2>
-               </div>
-			<div class="jumbotron-fluid">
-			  <div align="center">							  
-				  </br><a href="requisicao.php" class="btn btn-primary">CADASTO DE REQUISIÇÃO</a>&nbsp;
-				  &nbsp;<a href="retirada.php" class="btn btn-primary">CADASTRO DE RETIRADA</a>&nbsp;
-				  &nbsp;<a href="estoque.php" class="btn btn-primary">CONSULTAR ESTOQUE</a>
-				  &nbsp;<a href="entrada.php" class="btn btn-primary">CADASTRO DE RECEBIMENTOS</a>
-            </div>
-          </div>
+        <?php include_once("menu.php") ?>
             </br>
 			</br>
             <div class="row">
@@ -37,7 +28,7 @@
                             <th scope="col">Quantidade</th>
                             <th scope="col">Setor requerente</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Data(A-M-D H:M:S)</th>
+                            <th scope="col">Data</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -52,13 +43,15 @@
                         foreach($pdo->query($sql)as $row)
 							
                         {
+                            $date = new DateTime($row['data']);
+
                             echo '<tr>';
 			                echo '<th scope="row">'. $row['id'] . '</th>';
                             echo '<td>'. $row['produto'] . '</td>';
                             echo '<td>'. $row['quantidade'] . '</td>';
                             echo '<td>'. $row['requerente'] . '</td>';
                             echo '<td>'. $row['status_op'] . '</td>';
-                            echo '<td>' .$row['data'] . '</td>';
+                            echo '<td>' .$date->format('d/m/Y H:i:s'). '</td>';
                             echo '<td width=250>';
 							
                             /* echo '<a class="btn btn-primary" href="read.php?id='.$row['id'].'">Info</a>';

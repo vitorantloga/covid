@@ -1,3 +1,6 @@
+<?php 
+include_once("environment_variables.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -86,10 +89,10 @@
 	}
 							
 						
-		 				$servidor = "localhost";
-						$usuario = "root";
-						$senha = "usbw";
-						$dbname = "covid";
+		 				$servidor = DB_HOST;
+						$usuario = DB_USER;
+						$senha = DB_PASS;
+						$dbname = DB_NAME;
 						//Criar a conexao
 						$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 						

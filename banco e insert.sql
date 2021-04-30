@@ -40,6 +40,7 @@ INSERT INTO `entrada` (`id`, `data`, `produto`, `quantidade`) VALUES
 CREATE TABLE IF NOT EXISTS `produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `produto` varchar(50) NOT NULL,
+  `alert_number` INT(3) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 

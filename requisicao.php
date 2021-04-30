@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Datalist que exibe produtos
-$connectiond = mysqli_connect("localhost","root","usbw","covid") or die("Error " . mysqli_error($connection));
+$connectiond = mysqli_connect(DB_HOST,DB_USER ,DB_PASS,DB_NAME ) or die("Error " . mysqli_error($connectiond));
 mysqli_set_charset($connectiond, "utf8");
 
 $sqld = "select produto from produtos";
@@ -76,7 +76,8 @@ $resultds = mysqli_query($connectiond, $sqls) or die("Error " . mysqli_error($co
 </head>
 
 <body>
-	</br></br></br><div class="container">
+<?php include_once("menu.php"); ?> <br/>
+<div class="container">
     <div clas="span10 offset1">
         <div class="card">
             <div class="card-header">

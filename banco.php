@@ -1,11 +1,11 @@
 <?php
-
+include_once("environment_variables.php");
 class Banco
 {
-    private static $dbNome = 'covid';
-    private static $dbHost = 'localhost';
-    private static $dbUsuario = 'root';
-    private static $dbSenha = 'usbw';
+    private static $dbNome = DB_NAME;
+    private static $dbHost = DB_HOST;
+    private static $dbUsuario = DB_USER;
+    private static $dbSenha = DB_PASS;
     
     private static $cont = null;
     

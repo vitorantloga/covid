@@ -18,7 +18,7 @@ require 'banco.php';
 
 // Processar so quando tenha uma chamada post
 // Datalist que exibe produtos
-$connectiond = mysqli_connect("localhost","root","usbw","covid") or die("Error " . mysqli_error($connection));
+$connectiond = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME) or die("Error " . mysqli_error($connection));
 mysqli_set_charset($connectiond, "utf8");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -87,6 +87,7 @@ $resultd = mysqli_query($connectiond, $sqld) or die("Error " . mysqli_error($con
 </head>
 
 <body>
+<?php include_once("menu.php"); ?> <br/>
 <div class="container">
     <div clas="span10 offset1">
         <div class="card">
@@ -150,7 +151,7 @@ $resultd = mysqli_query($connectiond, $sqld) or die("Error " . mysqli_error($con
                     <thead>	
                         <tr>
 							<th scope="col">Id</th>
-							<th scope="col">Data(A-M-D H:M:S)</th>
+							<th scope="col">Data</th>
                             <th scope="col">Produto</th>
                             <th scope="col">Quantidade</th>                                                  
                             <th scope="col"></th>
@@ -167,9 +168,11 @@ $resultd = mysqli_query($connectiond, $sqld) or die("Error " . mysqli_error($con
                         foreach($pdo->query($sql)as $row)
 							
                         {
+                            $date = new DateTime($row['data']);
+                            
                             echo '<tr>';
 			                echo '<th scope="row">'. $row['idEntrada'] . '</th>';
-							echo '<td>'. $row['data'] . '</td>';
+							echo '<td>'. $date->format('d/m/Y H:i:s') . '</td>';
                             echo '<td>'. $row['produto'] . '</td>';
                             echo '<td align="center">'. $row['quantidade'] . '</td>';
                                                   	            
